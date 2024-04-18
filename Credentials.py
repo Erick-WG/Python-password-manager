@@ -83,7 +83,7 @@ def main():
                     ...
                     
                     
-                # fourth option logic, showing saved credentials.
+                # fourth option logic, showing saved credentials by user_name.
                 
                 
                 # fifth option logic, exiting the password manager.
