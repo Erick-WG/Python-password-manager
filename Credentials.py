@@ -18,23 +18,35 @@ class Credentials:
         else:
             return f'\nNo credentials found for: {account_name}\n'
                 
-        
+    # clear the None output from this function.
+    def export_passwords(self, account_name:str) -> str:
+        try:
+            for account in self.credentials:
+                if account_name == account:
+                    if account is not None:
+                        return f'The credentials associated with the \'{account_name}\' account are:\nUser name: {self.credentials[account]['username']}\nPassword: {self.credentials[account]['password']}\n'
+        except Exception as e:
+            print(f'Oops, no credentials found for {account_name}', e)
 
 
-# Account = Credentials()
+Account = Credentials()
 
 # Google = Account.set_credentials('google', 'Erick', 'passCode')
-# # Email = Account.set_credentials('email', 'EWG', 'email.psc')
-# # Facebook = Account.set_credentials('facebook', 'Erc', 'FB.pscode')
+# Email = Account.set_credentials('email', 'EWG', 'email.psc')
+# Facebook = Account.set_credentials('facebook', 'Erc', 'FB.pscode')
 
-# Google_passcode = Account.get_credentials('google')
-# # email_passcode = Account.get_credentials('email')
-# # facebook_passcode = Account.get_credentials('facebook')
+# Google_passcode = Account.export_passwords('google')
+# email_passcode = Account.export_passwords('email')
+# facebook_passcode = Account.export_passwords('facebook')
 
 # print(Google_passcode)
-# # print(email_passcode)
-# # print(facebook_passcode)
+# print(email_passcode)
+# print(facebook_passcode)
 
+def exporter(account_name):
+    # this fuction needs to append retreived credentials from user account search.
+    with open('exported_passwords.txt', 'a+') as exported_passwords:
+        exported_passwords.write(Account.export_passwords(account_name))
 
 
 def main():
@@ -84,6 +96,21 @@ def main():
                     
                     
                 # fourth option logic, showing saved credentials by user_name.
+                
+                elif user_input == 4:
+                    print('\nwhich account do you want to export saved passwords?\n')
+                    try:
+                        user_input_account = input('Enter account name: ')
+                        if user_input_account is not None:
+                            # writing to file with function.
+                            exporter(user_input_account)
+                            # giving user feedback and confirmation once done.
+                            print('exporting....')
+                            print('Done, check the file, "exported_passwords.txt"')
+                    except Exception as e:
+                        print('An exception occurred while exporting passwords, try again later.\n')
+                        print(f'{e}\n')
+                        
                 
                 
                 # fifth option logic, exiting the password manager.
