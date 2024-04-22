@@ -25,11 +25,13 @@ class Credentials:
                 if account_name == account:
                     if account is not None:
                         return f'The credentials associated with the \'{account_name}\' account are:\nUser name: {self.credentials[account]['username']}\nPassword: {self.credentials[account]['password']}\n'
+                    else:
+                        pass
         except Exception as e:
             print(f'Oops, no credentials found for {account_name}', e)
 
 
-Account = Credentials()
+# Account = Credentials()
 
 # Google = Account.set_credentials('google', 'Erick', 'passCode')
 # Email = Account.set_credentials('email', 'EWG', 'email.psc')
@@ -43,16 +45,18 @@ Account = Credentials()
 # print(email_passcode)
 # print(facebook_passcode)
 
-def exporter(account_name):
-    # this fuction needs to append retreived credentials from user account search.
-    with open('exported_passwords.txt', 'a+') as exported_passwords:
-        exported_passwords.write(Account.export_passwords(account_name))
-
 
 def main():
     print('\nWelcome to your password manager.') 
     print('Enter option 5 to Exit the system.')
     Account = Credentials()
+    
+    # 
+    def exporter(account_name):
+    # this fuction needs to append retreived credentials from user account search.
+        with open('exported_passwords.txt', 'a+') as exported_passwords:
+            exported_passwords.write(Account.export_passwords(account_name))
+    
     while True:
         print('Select an option you wish to continue with.\n')
         # creating user options and displaying them to the user.
@@ -107,6 +111,8 @@ def main():
                             # giving user feedback and confirmation once done.
                             print('exporting....')
                             print('Done, check the file, "exported_passwords.txt"')
+                        else:
+                            pass
                     except Exception as e:
                         print('An exception occurred while exporting passwords, try again later.\n')
                         print(f'{e}\n')
