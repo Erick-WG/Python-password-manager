@@ -126,10 +126,7 @@ def main():
                     break
                 
                 else:
-                    print('\nEnter a valid option. 🙄😑\n')
-            else:
-                print('\nEnter integer values only😑')
-                continue
+                    print('\nEnter a valid option. 😑\nEnter numbers between 1 & 5')
             
         except Exception as e:
             print("\nAbnormal input detected")
