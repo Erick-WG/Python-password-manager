@@ -130,7 +130,7 @@ def main():
             
         except Exception as e:
             print("\nAbnormal input detected")
-            print('\nOoops there must have been an error during initialization, kindly start over the process :(')
+            print('\nOops there must have been an error during initialization, kindly start over the process :(')
             print('Exited program with error\n')
             
             
