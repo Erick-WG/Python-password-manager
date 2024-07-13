@@ -1,15 +1,15 @@
 # Creating a password manager using class objects.
 
 class Credentials:
-    # initializin the class with our main concerns, (name, password), for collecting credentials.
+    # initializing the class with our main concerns, (name, password), for collecting credentials.
     def __init__(self):
-        # adding an operation paswd, applicable in deleting passwords.
+        # adding an operation passwd, applicable in deleting passwords.
         self.credentials = {}
         
     # creating new credentials and storing them in a list.
     def set_credentials(self, account,user_name, password):
         # creation
-        self.credentials[account] = {'username':user_name, 'password':password}  
+        self.credentials[account] = {'username':user_name, 'password':password}
     
     def _get_credentials(self, account_name):
         if account_name in self.credentials:
@@ -17,7 +17,7 @@ class Credentials:
             return f'Password for {account_name} is: {pass_code}\n'
         else:
             return f'\nNo credentials found for: {account_name}\n'
-                
+
     # clear the None output from this function.
     def export_passwords(self, account_name:str) -> str:
         try:
@@ -53,7 +53,7 @@ def main():
     
     # 
     def exporter(account_name):
-    # this fuction needs to append retreived credentials from user account search.
+    # this function needs to append retrieved credentials from user account search.
         with open('exported_passwords.txt', 'a+') as exported_passwords:
             exported_passwords.write(Account.export_passwords(account_name))
     
@@ -96,6 +96,7 @@ def main():
                 # third option logic, Deleting credentials.
                 elif user_input == 3:
                     # deleting account credentials.
+                    # Can we get the target credential by id and eliminate it?
                     ...
                     
                     

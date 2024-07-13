@@ -9,7 +9,7 @@ def mock_data(account_name):
 
 
 def exporter(account_name):
-    # this fuction needs to append retreived credentials from user account search.
+    # this function needs to append retrieved credentials from user account search.
     with open('exported_passwords.txt', 'w') as exported_passwords:
         exported_passwords.write(mock_data(account_name))
     
