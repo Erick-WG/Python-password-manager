@@ -2,7 +2,7 @@
 
 ## Desired features.
 
-[] Creating a new password. \
+[x] Creating a new password. \
 [] Saving unique passwords by unique account names.\
 [] Retrieving Passwords by account.\
 [] Updating an existing password.\
