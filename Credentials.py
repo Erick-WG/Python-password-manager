@@ -11,12 +11,13 @@ class Credentials:
         # creation
         self.credentials[account] = {'username':user_name, 'password':password}
     
-    def _get_credentials(self, account_name):
-        if account_name in self.credentials:
-            pass_code = self.credentials[account_name]['password']
-            return f'Password for {account_name} is: {pass_code}\n'
-        else:
-            return f'\nNo credentials found for: {account_name}\n'
+    def get_credentials(self, account_name):
+        for account_name in self.credentials:
+            if account_name in self.credentials:
+                pass_code = self.credentials[account_name]['password']
+                return f'Password for {account_name} is: {pass_code}\n'
+            else:
+                return f'\nNo credentials found for: {account_name}\n'
 
     # clear the None output from this function.
     def export_passwords(self, account_name:str) -> str:
@@ -60,7 +61,7 @@ def main():
     while True:
         print('Select an option you wish to continue with.\n')
         # creating user options and displaying them to the user.
-        options = {1:'Save a password', 2:'Get saved password by account name', 3:'Delete saved password', 4:'Show saved passwords',5:'Exit password manager'}
+        options = {1:'Save a password', 2:'Show saved password by account name', 3:'Delete saved password', 4:'Export a saved passwords',5:'Exit password manager'}
         
         for option in options:
             print(f'{option}: {options[option]}')
@@ -130,9 +131,8 @@ def main():
                     print('\nEnter a valid option. 😑\nEnter numbers between 1 & 5')
             
         except Exception as e:
-            print("\nAbnormal input detected")
-            print('\nOops there must have been an error during initialization, kindly start over the process :(')
-            print('Exited program with error\n')
+            print("\nWe apologize, there must have been an error that occurred", e)
+            
             
             
             
