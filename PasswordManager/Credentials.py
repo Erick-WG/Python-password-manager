@@ -21,15 +21,26 @@ class Credentials:
     def set_credentials(self, account,user_name, password):
         # creation
         self.credentials[account] = {'username':user_name, 'password':password}
-    
-    def get_credentials(self, account_name):
+
+    """  def get_credentials(self, account_name):
         for account_name in self.credentials:
             if account_name in self.credentials:
                 pass_code = self.credentials[account_name]['password']
                 return f'Password for {account_name} is: {pass_code}\n'
             else:
-                return f'\nNo credentials found for: {account_name}\n'
+                return f'\nNo credentials found for: {account_name}\n' """
 
+    def get_credentials(self):
+        print("\nGetting accounts saved...\n")
+        time.sleep(1.025)
+        try:
+            for account, credentials in self.credentials.items():
+                if account is not None:
+                    print(f'Account name: {account} Password: {credentials["password"]}')
+        except Exception as e:
+            print("An error occurred while getting credentials, ", e)
+            
+            
     # clear the None output from this function.
     def export_passwords(self, account_name:str) -> str:
         try:
@@ -104,13 +115,17 @@ def main():
                     print(f'\nsuccessfully created and saved credentials for your {account_name} account\n')
                     
                 # second option logic, looking up credentials.
-                elif user_input == 2:
-                    print('\nSearch for password by account name.\n')
-                    account_name = input("Enter account name: ")
-                    ps_d = Account.get_credentials(account_name)
-                    print(f'\nsuccessfully fetched password for {account_name}')
-                    print(f'{ps_d}')
+                    """ elif user_input == 2:
+                        print('\nSearch for password by account name.\n')
+                        account_name = input("Enter account name: ")
+                        ps_d = Account.get_credentials(account_name)
+                        print(f'\nsuccessfully fetched password for {account_name}')
+                        print(f'{ps_d}') """
                     
+                elif user_input == 2:
+                    ps_d = Account.get_credentials()
+                    print(f'{ps_d}')
+                    time.sleep(0.25)
                 # third option logic, Deleting credentials.
                 elif user_input == 3:
                     # deleting account credentials.
@@ -132,7 +147,7 @@ def main():
                             # delay for interactivity.
                             time.sleep(1.05)
                             print('\nDone 😉, check the file, "exported_passwords.txt"\n')
-                            time.sleep(1)
+                            time.sleep(0.03)
                         else:
                             pass
                     except Exception as e:
@@ -156,6 +171,7 @@ def main():
                 # fifth option logic, exiting the password manager.
                 elif user_input == 6:
                     print('\nExiting the password manager...')
+                    time.sleep(1.025)
                     print('Goodbye 😀\n')
                     break
                 
